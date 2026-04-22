@@ -1,0 +1,22 @@
+services:
+  mcp-logproxy:
+    build: .
+    # Or after you push to a registry:
+    # image: ghcr.io/shane/mcp-logproxy:latest
+    container_name: mcp-logproxy
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data
+    environment:
+      # Pass secrets from host env or a .env file next to this compose file.
+      CONTEXT7_API_KEY: ${CONTEXT7_API_KEY:-}
+      GITHUB_PAT: ${GITHUB_PAT:-}
+      LOG_LEVEL: info
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8787/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3

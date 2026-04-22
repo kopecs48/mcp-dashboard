@@ -1,0 +1,33 @@
+# Dependencies (rebuilt inside container)
+node_modules/
+ 
+# Build output (rebuilt inside container)
+dist/
+ 
+# Runtime data (mounted as volume, not baked in)
+data/
+ 
+# Secrets (passed via env at runtime)
+.env
+.env.local
+.env.*.local
+ 
+# Git / CI (not needed in image)
+.git/
+.gitignore
+.github/
+ 
+# Docs (not needed in image)
+README.md
+LICENSE
+*.md
+ 
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+ 
+# Logs
+*.log
+ 
