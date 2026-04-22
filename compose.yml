@@ -16,7 +16,7 @@ services:
       GITHUB_PAT: ${GITHUB_PAT:-}
       LOG_LEVEL: info
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8787/healthz"]
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8787/healthz').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
       interval: 30s
       timeout: 3s
       retries: 3
