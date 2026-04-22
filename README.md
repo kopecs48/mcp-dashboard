@@ -18,7 +18,7 @@ MCP clients give you very little visibility into what tools are actually being c
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/mcp-logproxy.git
+git clone https://github.com/kopecs48/mcp-logproxy.git
 cd mcp-logproxy
 
 # Configure which upstreams to proxy
