@@ -18,6 +18,12 @@ RUN npm prune --omit=dev
 # ---- Runtime ----
 FROM node:22-alpine AS runtime
 
+# OCI standard labels — the `source` label is what tells GHCR to link this
+# image to its source repository in the Packages UI. Edit the URL if you fork.
+LABEL org.opencontainers.image.source="https://github.com/your-username/mcp-logproxy"
+LABEL org.opencontainers.image.description="Logging reverse proxy for Model Context Protocol (MCP) servers"
+LABEL org.opencontainers.image.licenses="MIT"
+
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
